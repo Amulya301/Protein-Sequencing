@@ -115,7 +115,11 @@ Parameters: 2D list of strs ; 2D list of strs
 Returns: 2D list of strs
 '''
 def commonProteins(proteinList1, proteinList2):
-    return
+    res = []
+    for i in range(len(proteinList1)):
+            if proteinList1[i] in proteinList2:
+                res.append(proteinList1[i])
+    return res
 
 
 '''
@@ -224,10 +228,11 @@ def runFullProgram():
 
 # This code runs the test cases to check your work
 if __name__ == "__main__":
-    print("\n" + "#"*15 + " WEEK 1 TESTS " +  "#" * 16 + "\n")
-    test.week1Tests()
-    print("\n" + "#"*15 + " WEEK 1 OUTPUT " + "#" * 15 + "\n")
-    runWeek1()
+    test.testCommonProteins()
+    # print("\n" + "#"*15 + " WEEK 1 TESTS " +  "#" * 16 + "\n")
+    # test.week1Tests()
+    # print("\n" + "#"*15 + " WEEK 1 OUTPUT " + "#" * 15 + "\n")
+    # runWeek1()
 
     ## Uncomment these for Week 2 ##
     """
