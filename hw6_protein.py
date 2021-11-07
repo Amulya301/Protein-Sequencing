@@ -29,7 +29,13 @@ Parameters: str ; int
 Returns: list of strs
 '''
 def dnaToRna(dna, startIndex):
-    return
+    temp = []
+    for i in range(startIndex,len(dna),3):
+        temp.append(dna[i:i+3])
+        if dna[i:i+3]== 'TAG' or dna[i:i+3] == 'TAA' or dna[i:i+3] == 'TGA' :
+            break
+    rna = [string.replace('T' , 'U') for string in temp] 
+    return rna
 
 
 '''
@@ -188,7 +194,7 @@ def runFullProgram():
 
 # This code runs the test cases to check your work
 if __name__ == "__main__":
-    test.testReadFile()
+    test.testDnaToRna()
     # print("\n" + "#"*15 + " WEEK 1 TESTS " +  "#" * 16 + "\n")
     # test.week1Tests()
     # print("\n" + "#"*15 + " WEEK 1 OUTPUT " + "#" * 15 + "\n")
