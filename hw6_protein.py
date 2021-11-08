@@ -4,6 +4,7 @@ Name:
 Roll Number:
 """
 
+import numpy as np
 import hw6_protein_tests as test
 
 project = "Protein" # don't edit this
@@ -272,6 +273,14 @@ Returns: None
 '''
 def createChart(xLabels, freqList1, label1, freqList2, label2, edgeList=None):
     import matplotlib.pyplot as plt
+    w = 0.4
+    xValues = np.arange(len(xLabels))
+    plt.bar(xValues, freqList1, width=-w, align='edge', label= label1)
+    plt.bar(xValues, freqList2, width= w, align='edge', label= label2)
+    plt.xticks(ticks=list(range(len(xLabels))), labels=xLabels, rotation = "horizontal")
+    plt.legend()
+    plt.title("Comparison Of Frequencies")
+    plt.show()
     return
 
 
@@ -299,7 +308,7 @@ def runFullProgram():
 
 # This code runs the test cases to check your work
 if __name__ == "__main__":
-    test.testSetupChartData()
+    test.testCreateChart()
     #test.testFindAminoAcidDifferences()
     # print("\n" + "#"*15 + " WEEK 1 TESTS " +  "#" * 16 + "\n")
     # test.week1Tests()
