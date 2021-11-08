@@ -4,6 +4,7 @@ Name:
 Roll Number:
 """
 
+from os import read
 import numpy as np
 import hw6_protein_tests as test
 
@@ -311,6 +312,16 @@ Parameters: no parameters
 Returns: None
 '''
 def runFullProgram():
+    humanproteins = synthesizeProteins("data/human_p53.txt", "data/codon_table.json")
+    eleproteins = synthesizeProteins("data/elephant_p53.txt", "data/codon_table.json")
+    cmmnproteins = commonProteins(humanproteins, eleproteins)
+    diffs1 = findAminoAcidDifferences(humanproteins, eleproteins, 0.005)
+    displayTextResults(cmmnproteins, diffs1)
+    labels = makeAminoAcidLabels(humanproteins, eleproteins)
+    f1 = setupChartData(labels, humanproteins)
+    f2 = setupChartData(labels, eleproteins)
+    edges1 = makeEdgeList(labels, diffs1)
+    createChart(labels, f1, "Human" , f2, "Elephant", edgeList= edges1)
     return
 
 
@@ -318,7 +329,6 @@ def runFullProgram():
 
 # This code runs the test cases to check your work
 if __name__ == "__main__":
-    test.testMakeEdgeList()
     #test.testFindAminoAcidDifferences()
     # print("\n" + "#"*15 + " WEEK 1 TESTS " +  "#" * 16 + "\n")
     # test.week1Tests()
@@ -334,9 +344,9 @@ if __name__ == "__main__":
     
 
     ## Uncomment these for Week 3 ##
-    """
+    
     print("\n" + "#"*15 + " WEEK 3 TESTS " +  "#" * 16 + "\n")
     test.week3Tests()
     print("\n" + "#"*15 + " WEEK 3 OUTPUT " + "#" * 15 + "\n")
     runFullProgram()
-    """
+   
