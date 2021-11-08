@@ -253,7 +253,15 @@ Parameters: list of strs ; 2D list of strs
 Returns: list of floats
 '''
 def setupChartData(labels, proteinList):
-    return
+    lst1 = combineProteins(proteinList)
+    dict1 = aminoAcidDictionary(lst1)
+    res = []
+    for i in labels:
+        if i in dict1:
+            res.append(dict1[i] / len(lst1))
+        else:
+            res.append(0)
+    return res
 
 
 '''
@@ -291,7 +299,7 @@ def runFullProgram():
 
 # This code runs the test cases to check your work
 if __name__ == "__main__":
-    test.testMakeAminoAcidLabels()
+    test.testSetupChartData()
     #test.testFindAminoAcidDifferences()
     # print("\n" + "#"*15 + " WEEK 1 TESTS " +  "#" * 16 + "\n")
     # test.week1Tests()
