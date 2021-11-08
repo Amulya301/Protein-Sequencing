@@ -118,7 +118,8 @@ def commonProteins(proteinList1, proteinList2):
     res = []
     for i in range(len(proteinList1)):
             if proteinList1[i] in proteinList2:
-                res.append(proteinList1[i])
+                if proteinList1[i] not in res:
+                    res.append(proteinList1[i])
     return res
 
 
