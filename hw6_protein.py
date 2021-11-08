@@ -159,7 +159,31 @@ Parameters: 2D list of strs ; 2D list of strs ; float
 Returns: 2D list of values
 '''
 def findAminoAcidDifferences(proteinList1, proteinList2, cutoff):
-    return
+    lst1, lst2 = combineProteins(proteinList1), combineProteins(proteinList2)
+    dict1, dict2 = aminoAcidDictionary(lst1), aminoAcidDictionary(lst2)
+    freq1, freq2 = {}, {}
+    temp = []
+    aminodiffs = []  
+    for i in dict1:
+        freq1[i] = dict1[i] / len(lst1)
+        if i not in temp and i != 'Start' and i != 'Stop' :
+            temp.append(i)
+    for j in dict2:
+        freq2[j] = dict2[j] / len(lst2)
+        if j not in temp and j != 'Start' and j != 'Stop' :
+            temp.append(j)
+    for acid in temp:
+        frequency1 = 0
+        frequency2 = 0
+        if acid in freq1:
+            frequency1 = freq1[acid]
+        if acid in freq2:
+            frequency2 = freq2[acid]
+        diff = frequency2 - frequency1
+        if diff > cutoff or diff < -cutoff:
+           difflst = [acid, frequency1, frequency2]
+           aminodiffs.append(difflst)
+    return aminodiffs
 
 
 '''
@@ -238,7 +262,7 @@ def runFullProgram():
 
 # This code runs the test cases to check your work
 if __name__ == "__main__":
-    test.testAminoAcidDictionary()
+    test.testFindAminoAcidDifferences()
     # print("\n" + "#"*15 + " WEEK 1 TESTS " +  "#" * 16 + "\n")
     # test.week1Tests()
     # print("\n" + "#"*15 + " WEEK 1 OUTPUT " + "#" * 15 + "\n")
