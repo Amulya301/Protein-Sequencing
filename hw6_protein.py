@@ -275,8 +275,8 @@ def createChart(xLabels, freqList1, label1, freqList2, label2, edgeList=None):
     import matplotlib.pyplot as plt
     w = 0.4
     xValues = np.arange(len(xLabels))
-    plt.bar(xValues, freqList1, width=-w, align='edge', label= label1)
-    plt.bar(xValues, freqList2, width= w, align='edge', label= label2)
+    plt.bar(xValues, freqList1, width=-w, align='edge', label= label1, edgecolor = edgeList)
+    plt.bar(xValues, freqList2, width= w, align='edge', label= label2, edgecolor = edgeList)
     plt.xticks(ticks=list(range(len(xLabels))), labels=xLabels, rotation = "horizontal")
     plt.legend()
     plt.title("Comparison Of Frequencies")
@@ -291,7 +291,17 @@ Parameters: list of strs ; 2D list of values
 Returns: list of strs
 '''
 def makeEdgeList(labels, biggestDiffs):
-    return
+    edgelst = []
+    words = []
+    for i in range(len(biggestDiffs)):
+        words.append(biggestDiffs[i][0])
+    for i in range(len(labels)):
+        if labels[i] in words:
+            edgelst.append('black')
+        else:
+            edgelst.append('white')
+    
+    return edgelst
 
 
 '''
@@ -308,7 +318,7 @@ def runFullProgram():
 
 # This code runs the test cases to check your work
 if __name__ == "__main__":
-    test.testCreateChart()
+    test.testMakeEdgeList()
     #test.testFindAminoAcidDifferences()
     # print("\n" + "#"*15 + " WEEK 1 TESTS " +  "#" * 16 + "\n")
     # test.week1Tests()
