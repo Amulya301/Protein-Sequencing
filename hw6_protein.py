@@ -225,8 +225,7 @@ def runWeek2():
 
 
 ### WEEK 3 ###
-import matplotlib
-import numpy
+
 '''
 makeAminoAcidLabels(proteinList1, proteinList2)
 #2 [Hw6]
@@ -234,7 +233,17 @@ Parameters: 2D list of strs ; 2D list of strs
 Returns: list of strs
 '''
 def makeAminoAcidLabels(proteinList1, proteinList2):
-    return
+    res = []
+    plst1, plst2 = combineProteins(proteinList1), combineProteins(proteinList2)
+    acids1, acids2 = aminoAcidDictionary(plst1), aminoAcidDictionary(plst2)
+    for i in acids1:
+        if i not in res:
+            res.append(i)
+    for i in acids2:
+        if i not in res:
+            res.append(i)
+    res.sort()
+    return res
 
 
 '''
@@ -282,6 +291,7 @@ def runFullProgram():
 
 # This code runs the test cases to check your work
 if __name__ == "__main__":
+    test.testMakeAminoAcidLabels()
     #test.testFindAminoAcidDifferences()
     # print("\n" + "#"*15 + " WEEK 1 TESTS " +  "#" * 16 + "\n")
     # test.week1Tests()
@@ -290,10 +300,10 @@ if __name__ == "__main__":
 
     ## Uncomment these for Week 2 ##
    
-    print("\n" + "#"*15 + " WEEK 2 TESTS " +  "#" * 16 + "\n")
-    test.week2Tests()
-    print("\n" + "#"*15 + " WEEK 2 OUTPUT " + "#" * 15 + "\n")
-    runWeek2()
+    # print("\n" + "#"*15 + " WEEK 2 TESTS " +  "#" * 16 + "\n")
+    # test.week2Tests()
+    # print("\n" + "#"*15 + " WEEK 2 OUTPUT " + "#" * 15 + "\n")
+    # runWeek2()
     
 
     ## Uncomment these for Week 3 ##
