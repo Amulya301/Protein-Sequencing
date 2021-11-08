@@ -143,7 +143,13 @@ Parameters: list of strs
 Returns: dict mapping strs to ints
 '''
 def aminoAcidDictionary(aaList):
-    return
+    resdict = {}
+    for i in aaList:
+        if i not in resdict:
+            resdict[i] = 1
+        else:
+            resdict[i] +=1
+    return resdict
 
 
 '''
@@ -232,7 +238,7 @@ def runFullProgram():
 
 # This code runs the test cases to check your work
 if __name__ == "__main__":
-    test.testCombineProteins()
+    test.testAminoAcidDictionary()
     # print("\n" + "#"*15 + " WEEK 1 TESTS " +  "#" * 16 + "\n")
     # test.week1Tests()
     # print("\n" + "#"*15 + " WEEK 1 OUTPUT " + "#" * 15 + "\n")
