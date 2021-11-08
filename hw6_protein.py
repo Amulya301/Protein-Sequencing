@@ -225,7 +225,8 @@ def runWeek2():
 
 
 ### WEEK 3 ###
-
+import matplotlib
+import numpy
 '''
 makeAminoAcidLabels(proteinList1, proteinList2)
 #2 [Hw6]
